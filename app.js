@@ -1,8 +1,10 @@
-// Práctica académica: contraseña ficticia, sin acceso a servicios.
-const usuario = "administrador";
-const password = "ClaveDePrueba123!";
+const usuario = process.env.APP_USER;
+const password = process.env.APP_PASSWORD;
+const token = process.env.APP_TOKEN;
 
-console.log("Aplicación de prueba");
+if (!usuario || !password || !token) {
+    console.error("Faltan variables de entorno.");
+    process.exit(1);
+}
 
-// Token ficticio oficial para probar Secret Scanning.
-const tokenPrueba = "secret_scanning_ab85fc6f8d7638cf1c11da812da308d43_abcde";
+console.log("Configuración cargada sin mostrar credenciales.");
